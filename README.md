@@ -36,8 +36,8 @@ iterator.test({
 
 #Reference  
 test(opts, filename);  
-  opts, required Object
-      brand, required String, The brand to test against. MT, KA, or WP.  
-      match, required String or Function, the test to run  
-      models, required Array, list of SKUs to test  
-  filename, optional String, name of file to output to
+    opts, required Object
+        brand, required String, The brand to test against. MT, KA, or WP.  
+        match, required String or Function, the test to run  
+        models, required Array, list of SKUs to test  
+    filename, optional String, name of file to output to
