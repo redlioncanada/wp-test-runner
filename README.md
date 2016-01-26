@@ -34,6 +34,19 @@ iterator.test({
 }, 'results.json')
 ```  
 
+#Testing  
+Tests are may be run one of two ways. Either through a function, or a string. If a function is included, returning true means that the test passed, otherwise it has failed.  
+
+```
+function($, html) {
+	return true //passed
+}
+```
+
+The function is passed two parameters. $, a (cheerio)[https://github.com/cheeriojs/cheerio] instance, which is a html parser similar in syntax to jQuery, and html, the raw html.  
+
+If passed a string and the raw html contains the string, the test has passed.  
+
 #Reference  
 test(opts, filename);  
 &nbsp;&nbsp;&nbsp;&nbsp;opts, required Object  
