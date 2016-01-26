@@ -43,7 +43,7 @@ function($, html) {
 }
 ```
 
-The function is passed two parameters. $, a (cheerio)[https://github.com/cheeriojs/cheerio] instance, which is a html parser similar in syntax to jQuery, and html, the raw html.  
+The function is passed two parameters. $, a [cheerio](https://github.com/cheeriojs/cheerio) instance, which is a html parser similar in syntax to jQuery, and html, the raw html.  
 
 If passed a string and the raw html contains the string, the test has passed.  
 
