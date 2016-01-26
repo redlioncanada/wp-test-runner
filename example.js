@@ -21,5 +21,8 @@ iterator.test({
 		'MHW5500FC',
 		'MHW8200FW',
 		'MHW8200FC'
-	]
+	],
+	callback: function(results) {
+		console.log(results)
+	}
 }, 'results.json')

@@ -89,7 +89,7 @@ class testIterator {
 			},
 			function(cb1) {
 				if (filename && typeof(filename) === 'string') self.save(filename)
-				console.log(self.results);
+				if (self.opts.callback && typeof(self.opts.callback) === 'function') self.opts.callback.call(self,self.results)
 				cb1()
 			}
 		])
