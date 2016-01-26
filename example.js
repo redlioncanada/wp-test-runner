@@ -2,8 +2,8 @@ var iterator = require('./index')
 
 iterator.test({
 	brand: 'mt',
-	match: function($) {
-		return $('#displayAlert').length
+	match: function($, html) {
+		return html.indexOf('MHW5400DW') > -1
 	},
 	models: [
 		'MHW3100DW',

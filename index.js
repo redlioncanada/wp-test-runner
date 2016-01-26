@@ -17,7 +17,7 @@ class testIterator {
 					opts.url = 'http://www.kitchenaid.ca/webapp/wcs/stores/servlet/WHRORNAjaxCatalogSearchView?storeId=10231&catalogId=10581&langId=-300&beginIndex=0'
 					break
 				case 'wp':
-					opts.url = 'http://www.whirlpool.ca'
+					opts.url = 'http://www.whirlpool.ca/webapp/wcs/stores/servlet/WHRORNAjaxCatalogSearchView?storeId=10228&catalogId=10578&langId=-300&beginIndex=0'
 					break
 			}
 		}
@@ -72,7 +72,9 @@ class testIterator {
 										}
 										break
 									case 'function':
-										self.results[key].test = opts.match.call(self,cheerio.load(body)) ? 'passed' : 'failed'
+										var test = opts.match.call(self,cheerio.load(body), body)
+										console.log(test)
+										self.results[key].test = test ? 'passed' : 'failed'
 										break
 								}
 								cb2(error)
