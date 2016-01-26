@@ -73,7 +73,6 @@ class testIterator {
 										break
 									case 'function':
 										var test = opts.match.call(self,cheerio.load(body), body)
-										console.log(test)
 										self.results[key].test = test ? 'passed' : 'failed'
 										break
 								}
