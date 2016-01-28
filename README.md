@@ -54,4 +54,4 @@ test(opts, filename);
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;match, optional String or Function, the test to run  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;models, required Array, list of SKUs to test  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callback, optional Function, a function to call when complete  
-&nbsp;&nbsp;&nbsp;&nbsp;filename, optional String, name of file to output to
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filename, optional String, name of file to output to

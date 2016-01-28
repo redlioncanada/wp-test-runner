@@ -5,7 +5,7 @@ var async = require('async')
 var fs = require('fs')
 
 class testIterator {
-	test(opts, filename) {
+	test(opts) {
 		if (!opts.models || typeof(opts.models) !== 'object' || !opts.models.length) throw new Error('Must specify a list of models!')
 		if (!opts.url) {
 			if (!opts.brand) throw new Error('Must specify a brand! ka, mt, or wp.')
@@ -87,7 +87,7 @@ class testIterator {
 				})
 			},
 			function(cb1) {
-				if (filename && typeof(filename) === 'string') self.save(filename,results)
+				if (opts.filename && typeof(opts.filename) === 'string') self.save(opts.filename,results)
 				if (self.opts.callback && typeof(self.opts.callback) === 'function') self.opts.callback.call(self,results)
 				cb1()
 			}

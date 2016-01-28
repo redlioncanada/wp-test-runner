@@ -19,10 +19,11 @@ iterator.test({
 		'MHW8200FW',
 		'MHW8200FC'
 	],
+	filename: 'mt.json',
 	callback: function(results) {
 		console.log(results)
 	}
-}, 'mt.json')
+})
 
 iterator.test({
 	brand: 'wp',
@@ -54,7 +55,8 @@ iterator.test({
 		'WFW9290FC',
 		'WFW9290FBD'
 	],
+	filename: 'wp.json',
 	callback: function(results) {
 		console.log(results)
 	}
-}, 'wp.json')
+})
