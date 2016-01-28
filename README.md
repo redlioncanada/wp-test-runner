@@ -53,12 +53,23 @@ If passed a string and the raw html contains the string, the test has passed.
     "brand": "wp",
     "date": "1/28/2016, 11:09:44 AM",
     "results": {
-        "MHW3100DW": {
-            "exists": true,
-            "url": "http://www.maytag.ca/en_CA/-[MHW3100DW]-1505680/MHW3100DW/"
+        "WFW72HEDW": {
+            "en": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/en_CA/-[WFW72HEDW]-1304732/WFW72HEDW/"
+            },
+            "fr": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/fr_CA/-[WFW72HEDW]-1304732/WFW72HEDW/"
+            }
         },
         "MHW3500FW": {
-            "exists": false
+            "en": {
+                "exists": false
+            },
+            "fr": {
+                "exists": false
+            }
         },
     }
 }
