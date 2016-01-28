@@ -82,29 +82,33 @@ class testIterator {
 						} else {
 							(function a(language,model) {
 								request(model.url+'?skipCache=true', function(error, response, body) {
-									if (self.productDiscontinued(self, body)) {
-										model.discontinued = true
+									if (self.pageReturnedError(self, body)) {
+										model = {exists: false}
 									} else {
-										if (!error && response.statusCode == 200) {
-											switch(typeof opts.match) {
-												case 'string':
-													if (opts.match in body) {
-														model.test = 'passed'
-													} else {
-														model.test = 'failed'
-													}
-													break
-												case 'function':
-													var test = opts.match.call(self,cheerio.load(body), body)
-													model.test = test ? 'passed' : 'failed'
-													break
+										if (self.productDiscontinued(self, body)) {
+											model.discontinued = true
+										} else {
+											if (!error && response.statusCode == 200) {
+												switch(typeof opts.match) {
+													case 'string':
+														if (opts.match in body) {
+															model.test = 'passed'
+														} else {
+															model.test = 'failed'
+														}
+														break
+													case 'function':
+														var test = opts.match.call(self,cheerio.load(body), body)
+														model.test = test ? 'passed' : 'failed'
+														break
+												}
 											}
 										}
+									}
 
-										if (!error) results[key][language] = model
-										if (++completed == Object.keys(self.languages).length) {
-											cb2(error)
-										}
+									if (!error) results[key][language] = model
+									if (++completed == Object.keys(self.languages).length) {
+										cb2(error)
 									}
 								})
 							})(language,model)
@@ -126,8 +130,14 @@ class testIterator {
 		return !body.indexOf('MSRP');
 	}
 
+	pageReturnedError(self, body) {
+		if (body.indexOf('The store has encountered a problem processing the last request. Try again later. If the problem persists, contact your site administrator.') > -1) return true
+		return false
+	}
+
 	searchReturnedResults(self, body) {
 		var $ = cheerio.load(body)
+		
 		switch(self.brand) {
 			case "ka":
 				return $('.product-link').length > 0
