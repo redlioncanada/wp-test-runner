@@ -47,6 +47,23 @@ The function is passed two parameters. $, a [cheerio](https://github.com/cheerio
 
 If passed a string and the raw html contains the string, the test has passed.  
 
+#Example Output  
+```
+{
+    "brand": "wp",
+    "date": "1/28/2016, 11:09:44 AM",
+    "results": {
+        "MHW3100DW": {
+            "exists": true,
+            "url": "http://www.maytag.ca/en_CA/-[MHW3100DW]-1505680/MHW3100DW/"
+        },
+        "MHW3500FW": {
+            "exists": false
+        },
+    }
+}
+```
+
 #Reference  
 test(opts, filename);  
 &nbsp;&nbsp;&nbsp;&nbsp;opts, required Object  
