@@ -19,13 +19,13 @@ class testIterator {
 			var prefix = opts.environment && opts.environment.toLowerCase() == 'dev' ? 'cuat' : 'www';
 			switch(opts.brand.toLowerCase()) {
 				case 'mt':
-					opts.url = `http://${prefix}.maytag.ca/webapp/wcs/stores/servlet/WHRORNAjaxCatalogSearchView?storeId=10229&catalogId=10579&beginIndex=0`
+					opts.url = `http://${prefix}.maytag.ca/webapp/wcs/stores/servlet/WHRORNAjaxCatalogSearchView?storeId=10229&catalogId=10579&beginIndex=0&skipCache=true`
 					break
 				case 'ka':
-					opts.url = `http://${prefix}.kitchenaid.ca/webapp/wcs/stores/servlet/WHRORNAjaxCatalogSearchView?storeId=10231&catalogId=10581&beginIndex=0`
+					opts.url = `http://${prefix}.kitchenaid.ca/webapp/wcs/stores/servlet/WHRORNAjaxCatalogSearchView?storeId=10231&catalogId=10581&beginIndex=0&skipCache=true`
 					break
 				case 'wp':
-					opts.url = `http://${prefix}.whirlpool.ca/webapp/wcs/stores/servlet/WHRORNAjaxCatalogSearchView?storeId=10228&catalogId=10578&beginIndex=0`
+					opts.url = `http://${prefix}.whirlpool.ca/webapp/wcs/stores/servlet/WHRORNAjaxCatalogSearchView?storeId=10228&catalogId=10578&beginIndex=0&skipCache=true`
 					break
 			}
 			console.log(opts.url)
@@ -81,7 +81,7 @@ class testIterator {
 							}
 						} else {
 							(function a(language,model) {
-								request(model.url, function(error, response, body) {
+								request(model.url+'?skipCache=true', function(error, response, body) {
 									if (self.productDiscontinued(self, body)) {
 										model.discontinued = true
 									} else {
