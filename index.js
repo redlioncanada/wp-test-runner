@@ -15,7 +15,7 @@ class testIterator {
 	test(opts) {
 		if (!opts.models || typeof(opts.models) !== 'object' || !opts.models.length) throw new Error('Must specify a list of models!')
 		if (!opts.url) {
-			if (!opts.brand || !(opts.brand.toLowerCase() == 'wp' && opts.brand.toLowerCase() == 'mt' && opts.brand.toLowerCase() == 'ka')) throw new Error('Must specify a brand! ka, mt, or wp.')
+			if (!opts.brand || !(opts.brand.toLowerCase() == 'wp' || opts.brand.toLowerCase() == 'mt' || opts.brand.toLowerCase() == 'ka')) throw new Error('Must specify a brand! ka, mt, or wp.')
 			var prefix = opts.environment && opts.environment.toLowerCase() == 'dev' ? 'cuat' : 'www';
 			switch(opts.brand.toLowerCase()) {
 				case 'mt':
