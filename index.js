@@ -47,6 +47,7 @@ class testIterator {
 					for (var i in self.languages) {
 						(function a(i) {
 							request(opts.url+'&searchTerm='+model+'&langId='+self.languages[i], function(error, response, body) {
+								console.log(opts.url+'&searchTerm='+model+'&langId='+self.languages[i])
 								var data = {}
 								if (!error && response.statusCode == 200) {
 									if (self.searchReturnedResults(self, body)) {
@@ -82,6 +83,7 @@ class testIterator {
 						} else {
 							(function a(language,model) {
 								request(model.url+'?skipCache=true', function(error, response, body) {
+									console.log(model.url)
 									if (self.pageReturnedError(self, body)) {
 										model = {exists: false}
 									} else {
