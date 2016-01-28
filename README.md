@@ -51,7 +51,7 @@ If passed a string and the raw html contains the string, the test has passed.
 test(opts, filename);  
 &nbsp;&nbsp;&nbsp;&nbsp;opts, required Object  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brand, required String, The brand to test against. MT, KA, or WP.  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;match, required String or Function, the test to run  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;match, optional String or Function, the test to run  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;models, required Array, list of SKUs to test  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callback, optional Function, a function to call when complete  
 &nbsp;&nbsp;&nbsp;&nbsp;filename, optional String, name of file to output to

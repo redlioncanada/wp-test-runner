@@ -22,7 +22,7 @@ class testIterator {
 			}
 		}
 		this.opts = opts
-		this.results = {}
+		var results = {}
 		var self = this
 
 		async.series([
@@ -31,15 +31,15 @@ class testIterator {
 				var data = {}
 				var cnt = 0
 				async.each(opts.models, function(model, cb2) {
-					self.results[model] = {}
+					results[model] = {}
 
 					request(opts.url+'&searchTerm='+model, function(error, response, body) {
 						if (!error && response.statusCode == 200) {
 							if (self.searchReturnedResults(self, body)) {
-								self.results[model].exists = true
-								self.results[model].url = self.getModelLink(self, body)
+								results[model].exists = true
+								results[model].url = self.getModelLink(self, body)
 							} else {
-								self.results[model].exists = false
+								results[model].exists = false
 							}
 							cb2(error)
 						} else {
@@ -51,7 +51,7 @@ class testIterator {
 				})
 			},
 			function(cb1) {
-				async.forEachOf(self.results, function(model, key, cb2) {
+				async.forEachOf(results, function(model, key, cb2) {
 					if (!model.url) {
 						cb2(false)
 						return
@@ -59,21 +59,21 @@ class testIterator {
 
 					request(model.url, function(error, response, body) {
 						if (self.productDiscontinued(self, body)) {
-							self.results[key].discontinued = true
+							results[key].discontinued = true
 							cb2(error)
 						} else {
 							if (!error && response.statusCode == 200) {
 								switch(typeof opts.match) {
 									case 'string':
 										if (opts.match in body) {
-											self.results.test = 'passed'
+											results[key].test = 'passed'
 										} else {
-											self.results.test = 'failed'
+											results[key].test = 'failed'
 										}
 										break
 									case 'function':
 										var test = opts.match.call(self,cheerio.load(body), body)
-										self.results[key].test = test ? 'passed' : 'failed'
+										results[key].test = test ? 'passed' : 'failed'
 										break
 								}
 								cb2(error)
@@ -87,8 +87,8 @@ class testIterator {
 				})
 			},
 			function(cb1) {
-				if (filename && typeof(filename) === 'string') self.save(filename)
-				if (self.opts.callback && typeof(self.opts.callback) === 'function') self.opts.callback.call(self,self.results)
+				if (filename && typeof(filename) === 'string') self.save(filename,results)
+				if (self.opts.callback && typeof(self.opts.callback) === 'function') self.opts.callback.call(self,results)
 				cb1()
 			}
 		])
@@ -102,7 +102,6 @@ class testIterator {
 		var $ = cheerio.load(body)
 		switch(self.brand) {
 			case "ka":
-				console.log($('.product-link').length)
 				return $('.product-link').length > 0
 				break;
 			default:
@@ -121,14 +120,14 @@ class testIterator {
 		}
 	}
 
-	save(filename) {
+	save(filename,results) {
 		var self = this
 		if (!filename) filename = 'output.json'
-		if (self.results) {
+		if (results) {
 			var out = {
 				brand: self.opts.brand,
 				date: new Date().toLocaleString(),
-				results: self.results
+				results: results
 			}
 
 			var pretty = JSON.stringify(out, null, 4)

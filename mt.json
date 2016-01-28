@@ -1,0 +1,59 @@
+{
+    "brand": "wp",
+    "date": "1/28/2016, 11:05:01 AM",
+    "results": {
+        "MHW3100DW": {
+            "exists": true,
+            "url": "http://www.maytag.ca/en_CA/-[MHW3100DW]-1505680/MHW3100DW/"
+        },
+        "MHW4300DW": {
+            "exists": false
+        },
+        "MHW5100DW": {
+            "exists": true,
+            "url": "http://www.maytag.ca/en_CA/-[MHW5100DW]-1505681/MHW5100DW/"
+        },
+        "MHW5100DC": {
+            "exists": true,
+            "url": "http://www.maytag.ca/en_CA/-[MHW5100DC]-1505681/MHW5100DC/"
+        },
+        "MHW5400DW": {
+            "exists": true,
+            "url": "http://www.maytag.ca/en_CA/-[MHW5400DW]-1505682/MHW5400DW/"
+        },
+        "MHW5400DC": {
+            "exists": false
+        },
+        "MHW7100DW": {
+            "exists": true,
+            "url": "http://www.maytag.ca/en_CA/-[MHW7100DW]-1505683/MHW7100DW/"
+        },
+        "MHW7100DC": {
+            "exists": true,
+            "url": "http://www.maytag.ca/en_CA/-[MHW7100DC]-1505926/MHW7100DC/"
+        },
+        "MHW8100DW": {
+            "exists": true,
+            "url": "http://www.maytag.ca/en_CA/-[MHW8100DW]-1505927/MHW8100DW/"
+        },
+        "MHW8100DC": {
+            "exists": true,
+            "url": "http://www.maytag.ca/en_CA/-[MHW8100DC]-1505927/MHW8100DC/"
+        },
+        "MHW3500FW": {
+            "exists": false
+        },
+        "MHW5500FW": {
+            "exists": false
+        },
+        "MHW5500FC": {
+            "exists": false
+        },
+        "MHW8200FW": {
+            "exists": false
+        },
+        "MHW8200FC": {
+            "exists": false
+        }
+    }
+}
