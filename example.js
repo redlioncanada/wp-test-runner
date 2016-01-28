@@ -4,7 +4,7 @@ iterator.test({
 	brand: 'wp',
 	environment: 'dev',
 	match: function($, html) {
-		return html.indexOf('2016_Whirlpool_VIBRATION_FREE_LIMITED_GUARANTEE_EN.pdf') > -1
+		return html.indexOf('2016_Whirlpool_VIBRATION_FREE_LIMITED_GUARANTEE') > -1
 	},
 	models: [
 		'WFW72HEDW',

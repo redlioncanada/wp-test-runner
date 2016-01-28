@@ -70,37 +70,46 @@ class testIterator {
 				})
 			},
 			function(cb1) {
-				async.forEachOf(results, function(model, key, cb2) {
-					if (!model.url) {
-						cb2(false)
-						return
-					}
+				async.forEachOf(results, function(outer, key, cb2) {
+					var completed = 0;
+					for (var language in results[key]) {
+						var model = results[key][language]
 
-					request(model.url, function(error, response, body) {
-						if (self.productDiscontinued(self, body)) {
-							results[key].discontinued = true
-							cb2(error)
-						} else {
-							if (!error && response.statusCode == 200) {
-								switch(typeof opts.match) {
-									case 'string':
-										if (opts.match in body) {
-											results[key].test = 'passed'
-										} else {
-											results[key].test = 'failed'
-										}
-										break
-									case 'function':
-										var test = opts.match.call(self,cheerio.load(body), body)
-										results[key].test = test ? 'passed' : 'failed'
-										break
-								}
-								cb2(error)
-							} else {
-								cb2(error)
+						if (!model.url) {
+							if (++completed == Object.keys(self.languages).length) {
+								cb2(false)
 							}
+						} else {
+							(function a(language,model) {
+								request(model.url, function(error, response, body) {
+									if (self.productDiscontinued(self, body)) {
+										model.discontinued = true
+									} else {
+										if (!error && response.statusCode == 200) {
+											switch(typeof opts.match) {
+												case 'string':
+													if (opts.match in body) {
+														model.test = 'passed'
+													} else {
+														model.test = 'failed'
+													}
+													break
+												case 'function':
+													var test = opts.match.call(self,cheerio.load(body), body)
+													model.test = test ? 'passed' : 'failed'
+													break
+											}
+										}
+
+										if (!error) results[key][language] = model
+										if (++completed == Object.keys(self.languages).length) {
+											cb2(error)
+										}
+									}
+								})
+							})(language,model)
 						}
-					})
+					}
 				}, function(err) {
 					cb1(err)
 				})
