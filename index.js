@@ -5,21 +5,30 @@ var async = require('async')
 var fs = require('fs')
 
 class testIterator {
+	constructor() {
+		this.languages = {
+			'en': '-300',
+			'fr': '-301'
+		}
+	}
+
 	test(opts) {
 		if (!opts.models || typeof(opts.models) !== 'object' || !opts.models.length) throw new Error('Must specify a list of models!')
 		if (!opts.url) {
 			if (!opts.brand) throw new Error('Must specify a brand! ka, mt, or wp.')
+			var prefix = opts.environment && opts.environment.toLowerCase() == 'dev' ? 'cuat' : 'www';
 			switch(opts.brand.toLowerCase()) {
 				case 'mt':
-					opts.url = 'http://www.maytag.ca/webapp/wcs/stores/servlet/WHRORNAjaxCatalogSearchView?storeId=10229&catalogId=10579&langId=-300&beginIndex=0'
+					opts.url = `http://${prefix}.maytag.ca/webapp/wcs/stores/servlet/WHRORNAjaxCatalogSearchView?storeId=10229&catalogId=10579&beginIndex=0`
 					break
 				case 'ka':
-					opts.url = 'http://www.kitchenaid.ca/webapp/wcs/stores/servlet/WHRORNAjaxCatalogSearchView?storeId=10231&catalogId=10581&langId=-300&beginIndex=0'
+					opts.url = `http://${prefix}.kitchenaid.ca/webapp/wcs/stores/servlet/WHRORNAjaxCatalogSearchView?storeId=10231&catalogId=10581&beginIndex=0`
 					break
 				case 'wp':
-					opts.url = 'http://www.whirlpool.ca/webapp/wcs/stores/servlet/WHRORNAjaxCatalogSearchView?storeId=10228&catalogId=10578&langId=-300&beginIndex=0'
+					opts.url = `http://${prefix}.whirlpool.ca/webapp/wcs/stores/servlet/WHRORNAjaxCatalogSearchView?storeId=10228&catalogId=10578&beginIndex=0`
 					break
 			}
+			console.log(opts.url)
 		}
 		this.opts = opts
 		var results = {}
@@ -30,22 +39,32 @@ class testIterator {
 				//fetch each model's url
 				var data = {}
 				var cnt = 0
+
 				async.each(opts.models, function(model, cb2) {
 					results[model] = {}
+					var completed = 0;
 
-					request(opts.url+'&searchTerm='+model, function(error, response, body) {
-						if (!error && response.statusCode == 200) {
-							if (self.searchReturnedResults(self, body)) {
-								results[model].exists = true
-								results[model].url = self.getModelLink(self, body)
-							} else {
-								results[model].exists = false
-							}
-							cb2(error)
-						} else {
-							cb2(error)
-						}
-					})
+					for (var i in self.languages) {
+						(function a(i) {
+							request(opts.url+'&searchTerm='+model+'&langId='+self.languages[i], function(error, response, body) {
+								var data = {}
+								if (!error && response.statusCode == 200) {
+									if (self.searchReturnedResults(self, body)) {
+										data.exists = true
+										data.url = self.getModelLink(self, body)
+									} else {
+										data.exists = false
+									}
+								}
+
+								if (!error) results[model][i] = data;
+								if (++completed == Object.keys(self.languages).length) {
+									cb2(error)
+								}
+							})
+						})(i)
+					}
+
 				}, function(err) {
 					cb1(err)
 				})

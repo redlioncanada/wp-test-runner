@@ -1,0 +1,220 @@
+{
+    "brand": "wp",
+    "date": "1/28/2016, 12:25:06 PM",
+    "results": {
+        "WFW72HEDW": {
+            "en": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/en_CA/-[WFW72HEDW]-1304732/WFW72HEDW/"
+            },
+            "fr": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/fr_CA/-[WFW72HEDW]-1304732/WFW72HEDW/"
+            }
+        },
+        "WFW81HEDW": {
+            "fr": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/fr_CA/-[WFW81HEDW]-1304782/WFW81HEDW/"
+            },
+            "en": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/en_CA/-[WFW81HEDW]-1304782/WFW81HEDW/"
+            }
+        },
+        "WFW87HEDW": {
+            "fr": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/fr_CA/-[WFW87HEDW]-1304734/WFW87HEDW/"
+            },
+            "en": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/en_CA/-[WFW87HEDW]-1304734/WFW87HEDW/"
+            }
+        },
+        "WFW87HEDC": {
+            "en": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/en_CA/-[WFW87HEDC]-1304734/WFW87HEDC/"
+            },
+            "fr": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/fr_CA/-[WFW87HEDC]-1304734/WFW87HEDC/"
+            }
+        },
+        "WFW95HEDW": {
+            "en": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/en_CA/-[WFW95HEDW]-1304736/WFW95HEDW/"
+            },
+            "fr": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/fr_CA/-[WFW95HEDW]-1304736/WFW95HEDW/"
+            }
+        },
+        "WFW95HEDC": {
+            "en": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/en_CA/-[WFW95HEDC]-1304736/WFW95HEDC/"
+            },
+            "fr": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/fr_CA/-[WFW95HEDC]-1304736/WFW95HEDC/"
+            }
+        },
+        "WFW95HEDU": {
+            "fr": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/fr_CA/-[WFW95HEDU]-1304736/WFW95HEDU/"
+            },
+            "en": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/en_CA/-[WFW95HEDU]-1304736/WFW95HEDU/"
+            }
+        },
+        "WFW97HEDW": {
+            "fr": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/fr_CA/-[WFW97HEDW]-1304784/WFW97HEDW/"
+            },
+            "en": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/en_CA/-[WFW97HEDW]-1304784/WFW97HEDW/"
+            }
+        },
+        "WFW97HEDC": {
+            "en": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/en_CA/-[WFW97HEDC]-1304784/WFW97HEDC/"
+            },
+            "fr": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/fr_CA/-[WFW97HEDC]-1304784/WFW97HEDC/"
+            }
+        },
+        "WFW97HEDU": {
+            "en": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/en_CA/-[WFW97HEDU]-1304784/WFW97HEDU/"
+            },
+            "fr": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/fr_CA/-[WFW97HEDU]-1304784/WFW97HEDU/"
+            }
+        },
+        "WFW97HEDBD": {
+            "fr": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/fr_CA/-[WFW97HEDBD]-1304784/WFW97HEDBD/"
+            },
+            "en": {
+                "exists": true,
+                "url": "http://cuat.whirlpool.ca/en_CA/-[WFW97HEDBD]-1304784/WFW97HEDBD/"
+            }
+        },
+        "WFW75HEFW": {
+            "fr": {
+                "exists": false
+            },
+            "en": {
+                "exists": false
+            }
+        },
+        "WFW7590FW": {
+            "en": {
+                "exists": false
+            },
+            "fr": {
+                "exists": false
+            }
+        },
+        "WFW85HEFW": {
+            "en": {
+                "exists": false
+            },
+            "fr": {
+                "exists": false
+            }
+        },
+        "WFW85HEFC": {
+            "fr": {
+                "exists": false
+            },
+            "en": {
+                "exists": false
+            }
+        },
+        "WFW90HEFW": {
+            "en": {
+                "exists": false
+            },
+            "fr": {
+                "exists": false
+            }
+        },
+        "WFW90HEFC": {
+            "en": {
+                "exists": false
+            },
+            "fr": {
+                "exists": false
+            }
+        },
+        "WFW92HEFW": {
+            "en": {
+                "exists": false
+            },
+            "fr": {
+                "exists": false
+            }
+        },
+        "WFW92HEFC": {
+            "fr": {
+                "exists": false
+            },
+            "en": {
+                "exists": false
+            }
+        },
+        "WFW92HEFU": {
+            "fr": {
+                "exists": false
+            },
+            "en": {
+                "exists": false
+            }
+        },
+        "WFW92HEFBD": {
+            "fr": {
+                "exists": false
+            },
+            "en": {
+                "exists": false
+            }
+        },
+        "WFW9290FW": {
+            "en": {
+                "exists": false
+            },
+            "fr": {
+                "exists": false
+            }
+        },
+        "WFW9290FC": {
+            "en": {
+                "exists": false
+            },
+            "fr": {
+                "exists": false
+            }
+        },
+        "WFW9290FBD": {
+            "fr": {
+                "exists": false
+            },
+            "en": {
+                "exists": false
+            }
+        }
+    }
+}

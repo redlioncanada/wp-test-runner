@@ -1,32 +1,11 @@
 var iterator = require('./index')
 
 iterator.test({
-	brand: 'mt',
-	models: [
-		'MHW3100DW',
-		'MHW4300DW',
-		'MHW5100DW',
-		'MHW5100DC',
-		'MHW5400DW',
-		'MHW5400DC',
-		'MHW7100DW',
-		'MHW7100DC',
-		'MHW8100DW',
-		'MHW8100DC',
-		'MHW3500FW',
-		'MHW5500FW',
-		'MHW5500FC',
-		'MHW8200FW',
-		'MHW8200FC'
-	],
-	filename: 'mt.json',
-	callback: function(results) {
-		console.log(results)
-	}
-})
-
-iterator.test({
 	brand: 'wp',
+	environment: 'dev',
+	match: function($, html) {
+		return html.indexOf('2016_Whirlpool_VIBRATION_FREE_LIMITED_GUARANTEE_EN.pdf') > -1
+	},
 	models: [
 		'WFW72HEDW',
 		'WFW81HEDW',
@@ -36,7 +15,6 @@ iterator.test({
 		'WFW95HEDC',
 		'WFW95HEDU',
 		'WFW95HEDW',
-		'WFW95HEDC',
 		'WFW97HEDW',
 		'WFW97HEDC',
 		'WFW97HEDU',
