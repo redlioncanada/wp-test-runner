@@ -129,7 +129,8 @@ class testIterator {
 	}
 
 	productDiscontinued(self, body) {
-		return !body.indexOf('MSRP');
+		var $ = cheerio.load(body);
+		return $('inactive-product-details').length > 0;
 	}
 
 	pageReturnedError(self, body) {
