@@ -130,7 +130,7 @@ class testIterator {
 
 	productDiscontinued(self, body) {
 		var $ = cheerio.load(body);
-		return $('inactive-product-details').length > 0;
+		return $('.inactive-product-details').length > 0;
 	}
 
 	pageReturnedError(self, body) {
