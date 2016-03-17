@@ -95,41 +95,57 @@ class testIterator {
 								cb2(false)
 							}
 						} else {
-							(function a(language,model) {
+							var num = 0;
+							var doRequest = (function a(language,model,num) {
 								request(model.url+'?skipCache=true', function(error, response, body) {
 									console.log(model.url)
-									if (self.pageReturnedError(self, body)) {
-										model = {exists: false}
-									} else {
-										if (self.productDiscontinued(self, body)) {
-											model.discontinued = true
+									if (!error && response.statusCode == 200) {
+										if (self.pageReturnedError(self, body)) {
+											model = {exists: false}
 										} else {
-											if (!error && response.statusCode == 200) {
-												switch(typeof opts.match) {
-													case 'string':
-														if (opts.match in body) {
-															model.test = 'passed'
-														} else {
-															model.test = 'failed'
-														}
-														break
-													case 'function':
-														var test = opts.match.call(self,cheerio.load(body), body)
-														model.test = test ? 'passed' : 'failed'
-														break
-												}
+											if (self.productDiscontinued(self, body)) {
+												model.discontinued = true
+											} else {
+												if (!error && response.statusCode == 200) {
+													switch(typeof opts.match) {
+														case 'string':
+															if (opts.match in body) {
+																model.test = 'passed'
+															} else {
+																model.test = 'failed'
+															}
+															break
+														case 'function':
+															var test = opts.match.call(self,cheerio.load(body), body)
+															model.test = test ? 'passed' : 'failed'
+															break
+													}
 
-												model.categories = self.getProductCategories(self, body)
+													model.categories = self.getProductCategories(self, body)
+												}
 											}
+										}
+
+										results[key][language] = model
+										checkForCompletion();
+									} else {
+										if (++num >= 5) {
+											data.error = true;
+											data.message = 'Request for listing page failed 5 times or more';
+											results[model][i] = data;
+											checkForCompletion();
+										} else {
+											doRequest(language,model,num);
 										}
 									}
 
-									if (!error) results[key][language] = model
-									if (++completed == Object.keys(self.languages).length) {
-										cb2(error)
+									function checkForCompletion() {
+										if (++completed == Object.keys(self.languages).length) {
+											cb2(error)
+										}
 									}
 								})
-							})(language,model)
+							})(language,model,num)
 						}
 					}
 				}, function(err) {
