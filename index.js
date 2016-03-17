@@ -45,7 +45,8 @@ class testIterator {
 					var completed = 0;
 
 					for (var i in self.languages) {
-						(function a(i) {
+						var num = 0;
+						var doRequest = (function a(i,num) {
 							request(opts.url+'&searchTerm='+model+'&langId='+self.languages[i], function(error, response, body) {
 								console.log(opts.url+'&searchTerm='+model+'&langId='+self.languages[i])
 								var data = {}
@@ -56,14 +57,27 @@ class testIterator {
 									} else {
 										data.exists = false
 									}
+
+									results[model][i] = data;
+									checkForCompletion();
+								} else {
+									if (++num >= 5) {
+										data.error = true;
+										data.message = 'Request for listing page failed 5 times or more';
+										results[model][i] = data;
+										checkForCompletion();
+									} else {
+										doRequest(i,num);
+									}
 								}
 
-								if (!error) results[model][i] = data;
-								if (++completed == Object.keys(self.languages).length) {
-									cb2(error)
+								function checkForCompletion() {
+									if (++completed == Object.keys(self.languages).length) {
+										cb2(error)
+									}
 								}
 							})
-						})(i)
+						})(i,num)
 					}
 
 				}, function(err) {
@@ -104,6 +118,8 @@ class testIterator {
 														model.test = test ? 'passed' : 'failed'
 														break
 												}
+
+												model.categories = self.getProductCategories(self, body)
 											}
 										}
 									}
@@ -159,6 +175,15 @@ class testIterator {
 			default:
 				return $('.applince .applinceInfo_title a').first().attr('href')
 		}
+	}
+
+	getProductCategories(self, body) {
+		var $ = cheerio.load(body)
+		var ret = {}
+		ret.category = $('#breadcrumb-list-3 a').text().trim()
+		ret.subcategory = $('#breadcrumb-list-4 a').text().trim()
+		ret.subsubcategory = $('#breadcrumb-list-5 a').text().trim()
+		return ret
 	}
 
 	save(filename,results) {
