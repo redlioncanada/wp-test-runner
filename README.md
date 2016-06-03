@@ -1,5 +1,5 @@
 # wp-test-runner
-Runs tests against the whirlpool brand sites. Accepts a match parameter to test against and a list of SKUs to test. Outputs results in json format.  
+Runs tests against the whirlpool brand sites. Accepts a function to test against and a list of SKUs to test. Outputs results in json format.  
   
 #Getting Started  
 npm install  
