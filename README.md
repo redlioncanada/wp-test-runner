@@ -36,16 +36,19 @@ iterator.test({
 ```  
 
 #Testing  
-The `match` option may be passed a function, or a string. If a function is passed, that function returning true means that the test passed, otherwise it has failed.  
+The `match` option may be given a function, or a string. If a function is given, that function returning true means that the test passed, otherwise it has failed.  
 
 ```
-function($, html) {
+match: function($, html) {
 	return true //passed
 }
 ```
 
-The function is passed two parameters. $, a [cheerio](https://github.com/cheeriojs/cheerio) instance, which is a html parser similar in syntax to jQuery, and the raw html string.  
+The function has two parameters. $, a [cheerio](https://github.com/cheeriojs/cheerio) instance, which is a html parser similar in syntax to jQuery, and the raw html string.  
 
+```
+match: 'Whirlpool has the most reliable site ever'
+```
 If `match` is passed a string and the raw html contains the string, the test has passed.  
 
 #Example Output  
