@@ -109,7 +109,7 @@ class testIterator {
 												if (!error && response.statusCode == 200) {
 													switch(typeof opts.match) {
 														case 'string':
-															if (opts.match in body) {
+															if (body.indexOf(opts.match) > -1) {
 																model.test = 'passed'
 															} else {
 																model.test = 'failed'
@@ -121,7 +121,7 @@ class testIterator {
 															break
 													}
 
-													model.categories = self.getProductCategories(self, body)
+													// model.categories = self.getProductCategories(self, body)
 												}
 											}
 										}
@@ -172,8 +172,8 @@ class testIterator {
 
 	searchReturnedResults(self, body) {
 		var $ = cheerio.load(body)
-		
-		switch(self.brand) {
+
+		switch(self.opts.brand) {
 			case "ka":
 				return $('.product-link').length > 0
 				break;
@@ -184,7 +184,7 @@ class testIterator {
 
 	getModelLink(self, body) {
 		var $ = cheerio.load(body)
-		switch(self.brand) {
+		switch(self.opts.brand) {
 			case "ka":
 				return $('.product_detail_set .product_row .product-link').first().attr('href')
 				break;
@@ -208,6 +208,7 @@ class testIterator {
 		if (results) {
 			var out = {
 				brand: self.opts.brand,
+				test: self.opts.match,
 				date: new Date().toLocaleString(),
 				results: results
 			}
